@@ -19,8 +19,8 @@
             <input name="descripcion" type = "text" class="form-control" id="descripcion">
         </div>
         <div class="form-group">
-            <label for="usuario">Usuario Responsable</label>
-            <select class="form-control" name="usuario" id="usuario">
+            <label for="usuario_owner">Usuario Responsable</label>
+            <select class="form-control" name="usuario_owner" id="usuario_owner">
                 <option th:each="usuario: ${listaUsuarios}" th:text="${usuario.correo}"></option>
             </select>
         </div>

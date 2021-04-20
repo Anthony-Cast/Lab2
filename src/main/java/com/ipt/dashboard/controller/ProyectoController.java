@@ -45,10 +45,12 @@ public class ProyectoController {
 
     @PostMapping("/guardar")
     public String guardarProyecto(Proyecto proyecto, RedirectAttributes redirectAttributes){
-        if (proyecto.getIdproyecto() == 0) {
-            redirectAttributes.addFlashAttribute("msg", "Proyecto creado exitosamente");
-        } else {
-            redirectAttributes.addFlashAttribute("msg", "Proyecto actualizado exitosamente");
+        Optional<Proyecto> proyectoOpt=proyectoRepository.findById(proyecto.getIdproyecto());
+        if(proyectoOpt.isPresent()){
+            redirectAttributes.addFlashAttribute("msg", "Proyecto editado exitosamente");
+        }
+        else {
+            redirectAttributes.addFlashAttribute("msg2", "Proyecto creado exitosamente");
         }
         proyectoRepository.save(proyecto);
         return "redirect:/proyecto/listar";
@@ -73,7 +75,7 @@ public class ProyectoController {
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             proyectoRepository.deleteById(id);
-            redirectAttributes.addFlashAttribute("msg", "Proyecto borrado exitosamente");
+            redirectAttributes.addFlashAttribute("msg3", "Proyecto borrado exitosamente");
         }
         return "redirect:/proyecto/listar";
     }

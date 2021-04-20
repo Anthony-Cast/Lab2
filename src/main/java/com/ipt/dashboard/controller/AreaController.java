@@ -41,7 +41,7 @@ public class AreaController {
     @PostMapping("/area/save")
     public String areaSave(Area area, RedirectAttributes attr){
         if(area.getIdarea() == 0 ){
-            attr.addFlashAttribute("msg","Area creada exitosamente");
+            attr.addFlashAttribute("msg2","Area creada exitosamente");
         }else{
             attr.addFlashAttribute("msg","Area actualizada exitosamente");
         }
@@ -76,7 +76,7 @@ public class AreaController {
 
         if (areaOpt.isPresent()) {
             areaRepository.deleteById(id);
-            attr1.addFlashAttribute("msg","Area borrada exitosamente");
+            attr1.addFlashAttribute("msg3","Area borrada exitosamente");
         }
         return "redirect:/area";
     }

@@ -17,7 +17,9 @@
         </nav>
         <h1>Lista de Areas</h1>
         <a class="btn btn-success mt-2 mb-3" th:href="@{/area/new}">Nueva Area</a>
-        <div th:if="${msg != null}" class="alert alert-success" th:text="${msg}"></div>
+        <div th:if="${msg!=null}" class="alert alert-warning" th:text="${msg}"></div>
+        <div th:if="${msg2!=null}" class="alert alert-success" th:text="${msg2}"></div>
+        <div th:if="${msg3!=null}" class="alert alert-danger" th:text="${msg3}"></div>
 
         <table class="table">
             <tr>

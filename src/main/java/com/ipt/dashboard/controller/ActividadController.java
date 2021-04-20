@@ -45,17 +45,17 @@ public class ActividadController {
     @PostMapping("/actividad/save")
     public String actividadSave(Actividad actividad, RedirectAttributes attr){
         if(actividad.getIdactividad() == 0 ){
-            attr.addFlashAttribute("msg","Actividad creada exitosamente");
+            attr.addFlashAttribute("msg2","Actividad creada exitosamente");
         }else{
             attr.addFlashAttribute("msg","Actividad actualizada exitosamente");
         }
 
         actividadRepository.save(actividad);
-        return "redirect:/actividad";
+        return "redirect:/proyecto/listar";
     }
 
     @GetMapping("/actividad/edit")
-    public String editActividad(@RequestParam("id") int id, Model model){
+    public String editActividad(@RequestParam("idactividad") int id, Model model){
 
         Optional<Actividad>  actividadOpt = actividadRepository.findById(id);
 
@@ -63,21 +63,21 @@ public class ActividadController {
             Actividad actividad = actividadOpt.get();
             model.addAttribute("actividad",actividad);
 
-            return "actividad/editForm";
+            return "redirect:/proyecto/listar";
         }else{
-            return "redirect:/actividad";
+            return "redirect:/proyecto/listar";
         }
     }
 
     @GetMapping("/actividad/borrar")
-    public String borrarActividad(@RequestParam("id") int id, RedirectAttributes attr1) {
+    public String borrarActividad(@RequestParam("idactividad") int id, RedirectAttributes attr1) {
 
         Optional<Actividad> actividadOpt = actividadRepository.findById(id);
 
         if (actividadOpt.isPresent()) {
             actividadRepository.deleteById(id);
-            attr1.addFlashAttribute("msg","Actividad borrada exitosamente");
+            attr1.addFlashAttribute("msg3","Actividad borrada exitosamente");
         }
-        return "redirect:/actividad";
+        return "redirect:/proyecto/listar";
     }
 }
