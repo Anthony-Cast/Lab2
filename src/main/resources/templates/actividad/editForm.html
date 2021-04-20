@@ -35,7 +35,10 @@
     <div class="form-group">
         <label for="estado">Estado</label>
         <br>
-        <input type = "text" class="form-control" th:field="*{estado}">
+        <select th:field="*{estado}">
+            <option th:value="*{estado}" th:if="*{estado != true}" th:text="${'Pendiente'}"></option>
+            <option th:value="*{estado}" th:if="*{estado != false}" th:text="${'Finalizado'}"></option>
+        </select>
     </div>
     <a class="btn btn-danger" th:href="@{'/proyecto/editar?id='+*{idproyecto}}">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>
