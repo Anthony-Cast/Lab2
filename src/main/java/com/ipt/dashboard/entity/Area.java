@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="areas")
 public class Area {
-
+    //Comentario
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idarea")
