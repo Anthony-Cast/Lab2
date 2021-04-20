@@ -29,7 +29,10 @@
             <input name="peso" type = "text" class="form-control" id="peso">
         </div>
         <div class="form-group">
-            <input name="estado" type = "hydden" class="form-control" id="estado" value="0">
+            <input name="idproyecto" type = "hidden" class="form-control" id="idproyecto" th:value = "${idpro}">
+        </div>
+        <div class="form-group">
+            <input name="estado" type = "hidden" class="form-control" id="estado" value="0">
         </div>
         <a class="btn btn-danger" th:href="@{/actividad}">Cancelar</a>
         <button type="submit" class="btn btn-primary">Registrar</button>
