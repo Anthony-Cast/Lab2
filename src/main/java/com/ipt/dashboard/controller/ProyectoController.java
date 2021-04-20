@@ -15,7 +15,7 @@ public class ProyectoController {
     @GetMapping(value = {"/listar", " "})
     public String listarProyectos(Model model){
         model.addAttribute("listaProyectos", proyectoRepository.findAll());
-        return "/proyecto/lista";
+        return "/proyecto/lista.html";
     }
     @GetMapping("/nuevo")
     public String nuevoProyecto(){
