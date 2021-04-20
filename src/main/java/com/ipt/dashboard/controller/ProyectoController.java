@@ -64,14 +64,14 @@ public class ProyectoController {
             model.addAttribute("proyecto", proyecto);
             model.addAttribute("listaUsuarios", usuarioRepository.findAll());
             model.addAttribute("listaActividades", actividadRepository.listarActividadesPorProyecto(id));
+            model.addAttribute("avance",proyectoRepository.obtenerAvance(id));
             return "/proyecto/editar";
         } else{
             return "redirect:/proyecto/listar";
         }
     }
-
     @GetMapping("/borrar")
-    public String borrarProyecto(Model model, @RequestParam("id") int id, RedirectAttributes redirectAttributes){
+    public String borrarProyecto(@RequestParam("id") int id, RedirectAttributes redirectAttributes){
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             proyectoRepository.deleteById(id);
