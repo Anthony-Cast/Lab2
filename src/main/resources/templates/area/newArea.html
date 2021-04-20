@@ -2,23 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nuevo Transportita</title>
+    <title>Nueva Area</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </head>
 <body class="container">
-    <h2>Nuevo Transportitas</h2>
+    <h2>Nueva Area</h2>
     <hr />
-    <form method="post" th:action="@{/shipper/save}">
+    <form method="post" th:action="@{/area/save}">
         <div class="form-group">
-            <label for="companyname">Nombre de la compania</label>
-            <input name="companyname" type = "text" class="form-control" id="companyname">
+            <label for="nombrearea">Nombre del Area</label>
+            <input name="nombrearea" type = "text" class="form-control" id="nombrearea">
         </div>
-        <div class="form-group">
-            <label for="phone">Telephone</label>
-            <input name="phone" type="text" class="form-control" id="phone">
-        </div>
-        <a class="btn btn-danger" th:href="@{/shipper}">Cancelar</a>
+        <a class="btn btn-danger" th:href="@{/area}">Cancelar</a>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </body>

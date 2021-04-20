@@ -8,6 +8,7 @@ public class Area {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idarea")
     private int idarea;
     @Column(nullable = false)
     private String nombrearea;

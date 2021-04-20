@@ -12,12 +12,6 @@
         <a class="btn btn-success mt-2 mb-3" th:href="@{/area/new}">Nueva Area</a>
         <div th:if="${msg != null}" class="alert alert-success" th:text="${msg}"></div>
 
-        <form class="form-inline mb-3" method="post" th:action="@{/area/search}">
-            <input class="form-control mr-2" placeholder="Searcher" name="searchName">
-            <button class="btn btn-outline-info" type="submit">Submit</button>
-            <a class="btn btn-outline-danger ml-2" th:href="@{/area}">Clear</a>
-        </form>
-
         <table class="table">
             <tr>
                 <th>ID Area</th>
@@ -29,7 +23,7 @@
                 <td th:text="${v.index + 1}"></td>
                 <td th:text="${area.nombrearea}"></td>
                 <td><a class="btn btn-info" th:href="@{'/area/edit?id='+${area.idarea}}">Editar</a></td>
-                <td><a class="btn btn-danger" th:href="@{'/area/borrar?id='+${area.nombrearea}}">Borrar</a></td>
+                <td><a class="btn btn-danger" th:href="@{'/area/borrar?id='+${area.idarea}}">Borrar</a></td>
             </tr>
         </table>
     </div>
