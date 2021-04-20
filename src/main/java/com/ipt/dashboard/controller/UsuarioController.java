@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UsuarioController {
@@ -21,11 +22,11 @@ public class UsuarioController {
     public String nuevoUsuario(){
         return "usuarios/nuevoUsuario";
     }
-    @GetMapping("/usuario/listar")
+    @GetMapping("/usuario/editar")
     public String editarUsuario(Usuario usario){
         return "usuarios/editarUsuarios";
     }
-    @GetMapping("/usuario/listar")
+    @PostMapping("/usuario/guardar")
     public String guardarUsuario(Usuario usuario){
         usuarioRepository.save(usuario);
         return  "redirect:/usuario/listar";

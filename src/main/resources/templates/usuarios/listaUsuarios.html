@@ -16,9 +16,9 @@
         <a class="navbar-brand" href="/area/listar">Areas</a>
     </div>
 </nav>
-<h2>Lista de Proyectos</h2>
-<a class="btn btn-primary mt-4 mb-4">Nuevo Usuario</a>
-<table class="table table-sm">
+<h2>Lista de Usuarios</h2>
+<a class="btn btn-primary mt-4 mb-4" th:href="@{/usuario/newForm}">Nuevo Usuario</a>
+<table class="table">
     <tr>
         <th>#</th>
         <th>Correo del usuario</th>
@@ -32,8 +32,8 @@
         <td th:text="${usuario.correo}"></td>
         <td th:text="${usuario.nombre}"></td>
         <td th:text="${usuario.apellidos}"></td>
-        <td><a class="btn btn-info">Editar</a></td>
-        <td><a class="btn btn-danger">Borrar</a></td>
+        <td><a class="btn btn-info" th:href="@{'/usuario/editar?id='+${info.index+1}}">Editar</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/usuario/borrar?id='+${info.index+1}}">Borrar</a></td>
     </tr>
 </table>
 </body>
