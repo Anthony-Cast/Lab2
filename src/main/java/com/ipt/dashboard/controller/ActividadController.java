@@ -37,7 +37,6 @@ public class ActividadController {
         model.addAttribute("idpro",idproyecto);
         return "actividad/newActividad";
     }
-
     @PostMapping("/actividad/save")
     public String actividadSave(Actividad actividad, RedirectAttributes attr){
         Optional<Actividad> optional = actividadRepository.findById(actividad.getIdactividad());
@@ -46,11 +45,9 @@ public class ActividadController {
         }else{
             attr.addFlashAttribute("msg2","Actividad creada exitosamente");
         }
-
         actividadRepository.save(actividad);
         return "redirect:/proyecto/editar?id="+actividad.getIdproyecto();
     }
-
     @GetMapping("/actividad/edit")
     public String editActividad(@RequestParam("idactividad") int id, Model model){
         Optional<Actividad>  actividadOpt = actividadRepository.findById(id);

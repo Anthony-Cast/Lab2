@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="estado">Estado</label>
         <br>
-        <select th:field="*{estado}">
+        <select class="form-control" th:field="*{estado}">
             <option th:value="*{estado}" th:if="*{estado != true}" th:text="${'Pendiente'}"></option>
             <option th:value="*{estado}" th:if="*{estado != false}" th:text="${'Finalizado'}"></option>
         </select>

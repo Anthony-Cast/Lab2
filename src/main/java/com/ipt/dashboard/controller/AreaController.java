@@ -40,16 +40,15 @@ public class AreaController {
 
     @PostMapping("/area/save")
     public String areaSave(Area area, RedirectAttributes attr){
-        if(area.getIdarea() == 0 ){
-            attr.addFlashAttribute("msg2","Area creada exitosamente");
-        }else{
+        Optional<Area> optional = areaRepository.findById(area.getIdarea());
+        if(optional.isPresent()){
             attr.addFlashAttribute("msg","Area actualizada exitosamente");
+        }else{
+            attr.addFlashAttribute("msg2","Area creada exitosamente");
         }
-
         areaRepository.save(area);
         return "redirect:/area";
     }
-
 
     @GetMapping("/area/edit")
     public String editArea(@RequestParam("id") int id, Model model){

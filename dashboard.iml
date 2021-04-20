@@ -19,7 +19,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="dashboard" value="ec646e97-d8b3-4c7c-b0ae-683bcc731180" />
-          <factory-entry name="entityManagerFactory" value="ec646e97-d8b3-4c7c-b0ae-683bcc731180" />
+          <factory-entry name="entityManagerFactory" value="a37c6f48-a465-44fa-8544-bb8954f2507c" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

@@ -41,6 +41,9 @@
 </div>
 <br>
 <a class="btn btn-primary mt-4 mb-4" th:href="@{'/actividad/new?idproyecto='+${proyecto.idproyecto}}">Nueva Actividad</a>
+<div th:if="${msg!=null}" class="alert alert-warning" th:text="${msg}"></div>
+<div th:if="${msg2!=null}" class="alert alert-success" th:text="${msg2}"></div>
+<div th:if="${msg3!=null}" class="alert alert-danger" th:text="${msg3}"></div>
 <table class="table table-sm">
     <tr>
         <th>#</th>
