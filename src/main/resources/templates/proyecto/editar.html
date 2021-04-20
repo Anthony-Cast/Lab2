@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Editar Proyecto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-
+<body class="container">
+<h2>Editar Proyecto</h2>
+<hr/>
+<form method="post" th:action="@{/proyecto/guardar}" th:object="${proyecto}">
+    <input th:value="${proyecto.idproyecto}" name="shipperId" type="hidden" />
+    <div class="form-group">
+        <label for="nombreproyecto">Nombre de la compañía</label>
+        <input th:field="*{nombreproyecto}" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="usuario_owner">Teléfono</label>
+        <input th:field="*{usuario_owner}" type="text" class="form-control" />
+    </div>
+    <a th:href="@{/proyecto/listar}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
 </body>
 </html>
