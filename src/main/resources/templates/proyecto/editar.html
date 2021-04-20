@@ -35,7 +35,6 @@
 </form>
 <br>
 <h5>Lista de Actividades del Proyecto</h5>
-<br>
 <a class="btn btn-primary mt-4 mb-4" th:href="@{'/actividad/new?idproyecto='+${proyecto.idproyecto}}">Nueva Actividad</a>
 <table class="table table-sm">
     <tr>
@@ -56,7 +55,6 @@
         <td><a class="btn btn-primary" th:href="@{'/actividad/edit?idactividad='+${actividad.idactividad}}">Editar</a></td>
         <td><a class="btn btn-danger" th:href="@{'/actividad/borrar?idactividad='+${actividad.idactividad}}">Borrar</a></td>
     </tr>
-
 </table>
 </body>
 </html>

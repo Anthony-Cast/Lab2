@@ -7,37 +7,38 @@
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </head>
 <body class="container">
-<h2>Editar Area</h2>
+<h2>Editar Actividad</h2>
 <hr />
-<form method="post" th:action="@{/area/save}" th:object="${area}">
-    <input type="hidden" th:field="*{idarea}">
+<form method="post" th:action="@{/actividad/save}" th:object="${actividad}">
+    <input type="hidden" th:field="*{idactividad}">
+    <input type="hidden" th:field="*{idproyecto}">
     <div class="form-group">
-        <label for="nombrearea">Nombre del Area</label>
-        <input type = "text" class="form-control" th:field="*{nombrearea}" id="nombrearea">
+        <label for="nombreactividad">Nombre de la actividad</label>
+        <br>
+        <input type = "text" class="form-control" th:field="*{nombreactividad}">
     </div>
-
-    <a class="btn btn-danger" th:href="@{/area}">Cancelar</a>
+    <div class="form-group">
+        <label for="descripcion">Descripción de la actividad</label>
+        <br>
+        <input type = "text" class="form-control" th:field="*{descripcion}">
+    </div>
+    <div class="form-group">
+        <label for="usuario_owner">Usuario Responsable</label>
+        <br>
+        <input type = "text" class="form-control" th:field="*{usuario_owner}">
+    </div>
+    <div class="form-group">
+        <label for="peso">Peso de la actividad</label>
+        <br>
+        <input type = "text" class="form-control" th:field="*{peso}">
+    </div>
+    <div class="form-group">
+        <label for="estado">Estado</label>
+        <br>
+        <input type = "text" class="form-control" th:field="*{estado}">
+    </div>
+    <a class="btn btn-danger" th:href="@{'/proyecto/editar?id='+*{idproyecto}}">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>
-
-    <hr />
-
-    <div class="container">
-        <h1>Lista de Usuarios del Area</h1>
-        <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Correo del usuario</th>
-                <th>Nombre del usuario</th>
-                <th>Apellidos del usuario</th>
-            </tr>
-            <tr th:each="usuario,v : ${listaUsuarios}">
-                <td th:text="${v.index + 1}"></td>
-                <td th:text="${usuario.correo}"></td>
-                <td th:text="${usuario.nombres}"></td>
-                <td th:text="${usuario.apellidos}"></td>
-            </tr>
-        </table>
-    </div>
 </form>
 </body>
 </html>

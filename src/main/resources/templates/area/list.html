@@ -16,14 +16,14 @@
             </div>
         </nav>
         <h1>Lista de Areas</h1>
-        <a class="btn btn-success mt-2 mb-3" th:href="@{/area/new}">Nueva Area</a>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/area/new}">Nueva Area</a>
         <div th:if="${msg!=null}" class="alert alert-warning" th:text="${msg}"></div>
         <div th:if="${msg2!=null}" class="alert alert-success" th:text="${msg2}"></div>
         <div th:if="${msg3!=null}" class="alert alert-danger" th:text="${msg3}"></div>
 
         <table class="table">
             <tr>
-                <th>ID Area</th>
+                <th>#</th>
                 <th>Nombre del Area</th>
                 <th></th>
                 <th></th>
@@ -31,7 +31,7 @@
             <tr th:each="area,v : ${areaList}">
                 <td th:text="${v.index + 1}"></td>
                 <td th:text="${area.nombrearea}"></td>
-                <td><a class="btn btn-info" th:href="@{'/area/edit?id='+${area.idarea}}">Editar</a></td>
+                <td><a class="btn btn-primary" th:href="@{'/area/edit?id='+${area.idarea}}">Editar</a></td>
                 <td><a class="btn btn-danger" th:href="@{'/area/borrar?id='+${area.idarea}}">Borrar</a></td>
             </tr>
         </table>

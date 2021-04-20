@@ -8,10 +8,7 @@ import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -36,7 +33,6 @@ public class ActividadController {
 
     @GetMapping("/actividad/new")
     public String actividadNew(@RequestParam("idproyecto") int idproyecto, Model model){
-        System.out.println("LLEGO AQUI");
         model.addAttribute("listaUsuarios", usuarioRepository.findAll());
         model.addAttribute("idpro",idproyecto);
         return "actividad/newActividad";
@@ -44,40 +40,38 @@ public class ActividadController {
 
     @PostMapping("/actividad/save")
     public String actividadSave(Actividad actividad, RedirectAttributes attr){
-        if(actividad.getIdactividad() == 0 ){
-            attr.addFlashAttribute("msg2","Actividad creada exitosamente");
-        }else{
+        Optional<Actividad> optional = actividadRepository.findById(actividad.getIdactividad());
+        if(optional.isPresent()){
             attr.addFlashAttribute("msg","Actividad actualizada exitosamente");
+        }else{
+            attr.addFlashAttribute("msg2","Actividad creada exitosamente");
         }
 
         actividadRepository.save(actividad);
-        return "redirect:/proyecto/listar";
+        return "redirect:/proyecto/editar?id="+actividad.getIdproyecto();
     }
 
     @GetMapping("/actividad/edit")
     public String editActividad(@RequestParam("idactividad") int id, Model model){
-
         Optional<Actividad>  actividadOpt = actividadRepository.findById(id);
-
+        Actividad actividad = actividadOpt.get();
         if(actividadOpt.isPresent()){
-            Actividad actividad = actividadOpt.get();
             model.addAttribute("actividad",actividad);
-
-            return "redirect:/proyecto/listar";
+            return "actividad/editForm";
         }else{
-            return "redirect:/proyecto/listar";
+            return "redirect:/proyecto/editar?id="+actividad.getIdproyecto();
         }
     }
 
     @GetMapping("/actividad/borrar")
     public String borrarActividad(@RequestParam("idactividad") int id, RedirectAttributes attr1) {
-
         Optional<Actividad> actividadOpt = actividadRepository.findById(id);
-
+        Actividad actividad=actividadOpt.get();
         if (actividadOpt.isPresent()) {
             actividadRepository.deleteById(id);
             attr1.addFlashAttribute("msg3","Actividad borrada exitosamente");
+
         }
-        return "redirect:/proyecto/listar";
+        return "redirect:/proyecto/editar?id="+actividad.getIdproyecto();
     }
 }
