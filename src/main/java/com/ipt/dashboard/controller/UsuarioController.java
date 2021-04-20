@@ -14,21 +14,24 @@ public class UsuarioController {
     UsuarioRepository usuarioRepository;
 
     @GetMapping("/usuario/listar")
-    public String listarUsuarios(Model model){
-        model.addAttribute("listaUsuarios",usuarioRepository.findAll());
+    public String listarUsuarios(Model model) {
+        model.addAttribute("listaUsuarios", usuarioRepository.findAll());
         return "usuarios/listaUsuarios";
     }
+
     @GetMapping("/usuario/newForm")
-    public String nuevoUsuario(){
+    public String nuevoUsuario() {
         return "usuarios/nuevoUsuario";
     }
+
     @GetMapping("/usuario/editar")
-    public String editarUsuario(Usuario usario){
+    public String editarUsuario(Usuario usario) {
         return "usuarios/editarUsuarios";
     }
+
     @PostMapping("/usuario/guardar")
-    public String guardarUsuario(Usuario usuario){
+    public String guardarUsuario(Usuario usuario) {
         usuarioRepository.save(usuario);
-        return  "redirect:/usuario/listar";
+        return "redirect:/usuario/listar";
     }
 }

@@ -1,7 +1,5 @@
 package com.ipt.dashboard.entity;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +15,7 @@ public class Usuario {
     private String apellidos;
     @Column(nullable = false)
     private Integer idarea;
+
     public String getCorreo() {
         return correo;
     }
@@ -29,8 +28,8 @@ public class Usuario {
         return nombres;
     }
 
-    public void setNombre(String nombre) {
-        this.nombres = nombre;
+    public void setNombre(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getApellidos() {
