@@ -7,17 +7,17 @@ import javax.persistence.*;
 public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idproducto;
+    private int idproyecto;
     private String nombreproyecto;
     @Column(nullable = false)
     private String usuario_owner;
 
-    public int getIdproducto() {
-        return idproducto;
+    public int getIdproyecto() {
+        return idproyecto;
     }
 
-    public void setIdproducto(int idproducto) {
-        this.idproducto = idproducto;
+    public void setIdproyecto(int idproyecto) {
+        this.idproyecto = idproyecto;
     }
 
     public String getNombreproyecto() {
