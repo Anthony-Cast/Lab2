@@ -1,7 +1,9 @@
 package com.ipt.dashboard.controller;
 
 import com.ipt.dashboard.entity.Area;
+import com.ipt.dashboard.entity.Usuario;
 import com.ipt.dashboard.repository.AreaRepository;
+import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,9 @@ public class AreaController {
 
     @Autowired
     AreaRepository areaRepository;
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
     @GetMapping("/area")
     public String areaList(Model model){
@@ -54,6 +59,10 @@ public class AreaController {
         if(areaOpt.isPresent()){
             Area area = areaOpt.get();
             model.addAttribute("area",area);
+
+            List<Usuario> usuarioOpt = usuarioRepository.listarUsuariosPorArea(id);
+            model.addAttribute("listaUsuarios", usuarioOpt);
+
             return "area/editForm";
         }else{
             return "redirect:/area";
