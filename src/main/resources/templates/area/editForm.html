@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Transportita</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body class="container">
+<h2>Editar Transportitas</h2>
+<hr />
+<form method="post" th:action="@{/shipper/save}" th:object="${shipper}">
+    <input type="hidden" th:field="*{shipperid}">
+    <div class="form-group">
+        <label for="companyname">Nombre de la compania</label>
+        <input type = "text" class="form-control" th:field="*{companyname}" id="companyname">
+    </div>
+    <div class="form-group">
+        <label for="phone">Telephone</label>
+        <input type = "text" class="form-control" th:field="*{phone}" id = "phone">
+    </div>
+    <a class="btn btn-danger" th:href="@{/shipper}">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+</body>
+</html>
