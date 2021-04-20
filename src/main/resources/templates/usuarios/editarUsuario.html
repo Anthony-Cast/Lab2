@@ -16,14 +16,24 @@
         <a class="navbar-brand" href="/area/listar">Areas</a>
     </div>
 </nav>
-<h2>Editar Proyecto</h2>
+<h2>Editar Uusuario</h2>
 <hr/>
-<form method="post" th:action="@{'/proyecto/guardar'}">
-
-
-
+<form method="post" th:action="@{/proyecto/guardar}" th:object="${usuario}" >
+    <input type="hidden" th:field="*{correo}">
+    <div class="form-group">
+        <label for="nombres">Nombre del Usuario</label>
+        <input type="text" class="form-group" th:field="*{nombres}">
+    </div>
+    <div class="form-group">
+        <label for="apellidos">Apellidos del Usuario</label>
+        <input type="text" class="form-group" th:field="*{apellidos}">
+    </div>
+    <div class="form-group">
+        <label for="idarea">Area del Usuario</label>
+        <input type="text" class="form-group" th:field="*{idarea}">
+    </div>
     <button type="submit" class="btn btn-primary">Registrar</button>
-    <a th:href="@{'/proyecto/listar'}" class="btn btn-danger">Cancelar</a>
+    <a th:href="@{/usuario/listar}" class="btn btn-danger">Cancelar</a>
 </form>
 </body>
 </html>

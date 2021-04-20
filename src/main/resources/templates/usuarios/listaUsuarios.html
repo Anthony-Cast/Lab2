@@ -27,13 +27,13 @@
         <th></th>
         <th></th>
     </tr>
-    <tr th:each="usuario, info : ${listaUsuarios}">
+    <tr th:each="usuario,info:${listaUsuarios}">
         <td th:text="${info.index+1}"></td>
         <td th:text="${usuario.correo}"></td>
-        <td th:text="${usuario.nombre}"></td>
+        <td th:text="${usuario.nombres}"></td>
         <td th:text="${usuario.apellidos}"></td>
-        <td><a class="btn btn-info" th:href="@{'/usuario/editar?id='+${info.index+1}}">Editar</a></td>
-        <td><a class="btn btn-danger" th:href="@{'/usuario/borrar?id='+${info.index+1}}">Borrar</a></td>
+        <td><a class="btn btn-info" th:href="@{'/usuario/editar?id='+${usuario.correo}}">Editar</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/usuario/borrar?id='+${usuario.correo}}">Borrar</a></td>
     </tr>
 </table>
 </body>
