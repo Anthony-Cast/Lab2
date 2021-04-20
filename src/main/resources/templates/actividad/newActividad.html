@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Actividad</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body class="container">
+    <h2>Nueva Actividad</h2>
+    <hr />
+    <form method="post" th:action="@{/actividad/save}">
+        <div class="form-group">
+            <label for="nombreactividad">Nombre de la actividad</label>
+            <input name="nombreactividad" type = "text" class="form-control" id="nombreactividad">
+        </div>
+        <div class="form-group">
+            <label for="nombreactividad">Descripcion de la actividad</label>
+            <input name="nombreactividad" type = "text" class="form-control" id="nombreactividad">
+        </div>
+        <div class="form-group">
+            <label for="usuario">Usuario Responsable</label>
+            <select class="form-control" name="usuario" id="usuario">
+                <option th:each="usuario: ${listaUsuarios}" th:text="${usuario.correo}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso de la actividad</label>
+            <input name="peso" type = "text" class="form-control" id="peso">
+        </div>
+        <div class="form-group">
+            <input name="estado" type = "hydden" class="form-control" id="estado" value="0">
+        </div>
+        <a class="btn btn-danger" th:href="@{/actividad}">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</body>
+</html>
