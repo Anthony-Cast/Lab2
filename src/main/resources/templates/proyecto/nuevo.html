@@ -16,8 +16,10 @@
         <input name="nombreproyecto" type="text" class="form-control" id="nombreproyecto">
     </div>
     <div class="form-group">
-        <label for="usuario_owner">Usuario Responsable</label>
-        <input name="usuario_owner" type="text" class="form-control" id="usuario_owner">
+        <label for="usuario">Usuario Responsable</label>
+        <select class="form-control" name="usuario" id="usuario">
+            <option th:each="usuario: ${listaUsuarios}" th:text="${usuario.nombres} + ' ' + ${usuario.apellidos}"></option>
+        </select>
     </div>
     <a th:href="@{/proyecto/listar}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>

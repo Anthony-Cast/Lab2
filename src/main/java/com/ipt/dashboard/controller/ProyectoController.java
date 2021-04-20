@@ -2,7 +2,9 @@ package com.ipt.dashboard.controller;
 
 import com.fasterxml.jackson.datatype.jdk8.Jdk8UnwrappingOptionalBeanPropertyWriter;
 import com.ipt.dashboard.entity.Proyecto;
+import com.ipt.dashboard.repository.ActividadRepository;
 import com.ipt.dashboard.repository.ProyectoRepository;
+import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +19,30 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/proyecto")
 public class ProyectoController {
+
     @Autowired
     ProyectoRepository proyectoRepository;
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
+
+    @Autowired
+    ActividadRepository actividadRepository;
+
     @GetMapping(value = {"/listar", " "})
     public String listarProyectos(Model model){
         model.addAttribute("listaProyectos", proyectoRepository.findAll());
         return "/proyecto/lista";
     }
+
     @GetMapping("/nuevo")
-    public String nuevoProyecto(){
+    public String nuevoProyecto(Model model){
+
+        model.addAttribute("listaUsuarios", usuarioRepository.findAll());
         return "/proyecto/nuevo";
+
     }
+
     @PostMapping("/guardar")
     public String guardarProyecto(Proyecto proyecto, RedirectAttributes redirectAttributes){
         if (proyecto.getIdproyecto() == 0) {
@@ -38,12 +53,15 @@ public class ProyectoController {
         proyectoRepository.save(proyecto);
         return "redirect:/proyecto/listar";
     }
+
     @GetMapping("/editar")
     public String editarProyecto(Model model, @RequestParam("id") int id){
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             Proyecto proyecto = optionalProyecto.get();
             model.addAttribute("proyecto", proyecto);
+            model.addAttribute("listaUsuarios", usuarioRepository.findAll());
+            model.addAttribute("listaActividades", actividadRepository.listarActividadesPorProyecto(id));
             return "/proyecto/editar";
         } else{
             return "redirect:/proyecto/listar";
