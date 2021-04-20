@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -74,6 +75,10 @@ public class ProyectoController {
     public String borrarProyecto(@RequestParam("id") int id, RedirectAttributes redirectAttributes){
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
+            List<Integer> numero =proyectoRepository.obtenerActividadesProyecto(id);
+            for(Integer id_act:numero){
+             actividadRepository.deleteById(id_act);
+            }
             proyectoRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("msg3", "Proyecto borrado exitosamente");
         }

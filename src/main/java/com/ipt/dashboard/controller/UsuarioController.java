@@ -26,7 +26,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuario/newForm")
-    public String nuevoUsuario() {
+    public String nuevoUsuario(Model model) {
+        model.addAttribute("areas",areaRepository.findAll());
         return "usuarios/nuevoUsuario";
     }
 
