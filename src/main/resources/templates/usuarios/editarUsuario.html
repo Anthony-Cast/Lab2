@@ -35,9 +35,11 @@
         <input type="text" class="form-group" th:field="*{apellidos}">
     </div>
     <div class="form-group">
-        <label for="idarea">Area del Usuario</label>
+        <label for="idarea"> Area</label>
         <br>
-        <input type="text" class="form-group" th:field="*{idarea}">
+        <select>
+            <option th:each="lista:${areas}" th:value="${lista.idarea}" th:text="${lista.nombrearea}" th:selected="${lista.idarea}==*{idarea}"></option>
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Registrar</button>
     <a th:href="@{/usuario/listar}" class="btn btn-danger">Cancelar</a>
