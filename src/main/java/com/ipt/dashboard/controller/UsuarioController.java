@@ -2,6 +2,7 @@ package com.ipt.dashboard.controller;
 
 
 import com.ipt.dashboard.entity.Usuario;
+import com.ipt.dashboard.repository.ActividadRepository;
 import com.ipt.dashboard.repository.AreaRepository;
 import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -19,6 +23,8 @@ public class UsuarioController {
     UsuarioRepository usuarioRepository;
     @Autowired
     AreaRepository areaRepository;
+    @Autowired
+    ActividadRepository actividadRepository;
     @GetMapping("/usuario/listar")
     public String listarUsuarios(Model model) {
         model.addAttribute("listaUsuarios", usuarioRepository.findAll());
@@ -59,6 +65,10 @@ public class UsuarioController {
     public String borrarUsuario(@RequestParam("id") String id, RedirectAttributes attr){
         Optional<Usuario> optional = usuarioRepository.findById(id);
         if(optional.isPresent()){
+            List<Integer> actividades=actividadRepository.obtenerActividades(optional.get().getCorreo());
+            for(Integer id_act:actividades){
+                actividadRepository.deleteById(id_act);
+            }
             usuarioRepository.deleteById(id);
             attr.addFlashAttribute("msg3", "Usuario borrado exitosamente");
         }
