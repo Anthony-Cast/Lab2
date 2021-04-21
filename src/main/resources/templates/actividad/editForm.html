@@ -36,8 +36,8 @@
         <label for="estado">Estado</label>
         <br>
         <select class="form-control" th:field="*{estado}">
-            <option th:value="*{estado}" th:if="*{estado != true}" th:text="${'Pendiente'}"></option>
-            <option th:value="*{estado}" th:if="*{estado != false}" th:text="${'Finalizado'}"></option>
+            <option th:value="${true}" th:text="${'Finalizado'}"></option>
+            <option selected="selected" th:value="${false}" th:text="${'Pendiente'}"></option>
         </select>
     </div>
     <a class="btn btn-danger" th:href="@{'/proyecto/editar?id='+*{idproyecto}}">Cancelar</a>
