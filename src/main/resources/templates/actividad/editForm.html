@@ -25,7 +25,9 @@
     <div class="form-group">
         <label for="usuario_owner">Usuario Responsable</label>
         <br>
-        <input type = "text" class="form-control" th:field="*{usuario_owner}">
+        <select class="form-control">
+            <option th:each="lista:${usuarios}" th:text="${lista}" th:selected="${lista}==*{usuario_owner}"></option>
+        </select>
     </div>
     <div class="form-group">
         <label for="peso">Peso de la actividad</label>

@@ -54,6 +54,7 @@ public class ActividadController {
         Actividad actividad = actividadOpt.get();
         if(actividadOpt.isPresent()){
             model.addAttribute("actividad",actividad);
+            model.addAttribute("usuarios",actividadRepository.obtenerusuariosOwner());
             return "actividad/editForm";
         }else{
             return "redirect:/proyecto/editar?id="+actividad.getIdproyecto();
