@@ -12,7 +12,7 @@ public interface ActividadRepository extends JpaRepository<Actividad,Integer> {
 
     @Query(value="select * from actividades where idproyecto like %?1%",nativeQuery = true)
     List<Actividad> listarActividadesPorProyecto(int idproyecto);
-    @Query(value = "select usuario_owner from actividades",nativeQuery = true)
+    @Query(value = "select correo from usuarios",nativeQuery = true)
     List<String> obtenerusuariosOwner();
     @Query(value="select idactividad from actividades where usuario_owner=?1",nativeQuery = true)
     List<Integer> obtenerActividades(String correo);

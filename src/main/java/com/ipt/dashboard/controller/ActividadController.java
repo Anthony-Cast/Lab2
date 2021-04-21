@@ -39,6 +39,8 @@ public class ActividadController {
     }
     @PostMapping("/actividad/save")
     public String actividadSave(Actividad actividad, RedirectAttributes attr){
+        System.out.println("llegamos aqui");
+        System.out.println(actividad.getUsuario_owner());
         Optional<Actividad> optional = actividadRepository.findById(actividad.getIdactividad());
         if(optional.isPresent()){
             attr.addFlashAttribute("msg","Actividad actualizada exitosamente");

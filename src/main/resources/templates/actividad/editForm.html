@@ -25,7 +25,7 @@
     <div class="form-group">
         <label for="usuario_owner">Usuario Responsable</label>
         <br>
-        <select class="form-control">
+        <select class="form-control" id="usuario_owner" name="usuario_owner">
             <option th:each="lista:${usuarios}" th:text="${lista}" th:selected="${lista}==*{usuario_owner}"></option>
         </select>
     </div>
